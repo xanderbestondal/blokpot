@@ -16,7 +16,7 @@ void ofApp::setup(){
 	light.setPosition(1000, 1000, 1000);
 	light.enable();
 
-	testShape.loadObj("meshes/sam.obj");
+	//testShape.loadObj("meshes/sam.obj");
 
 	//cam.begin();
 	//cam.setPosition(0, 0, 1000);
