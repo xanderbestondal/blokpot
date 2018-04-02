@@ -275,7 +275,11 @@ void shape::drawNormals(bool faces){
             ofSetColor(0,0,255);
             ofLine(mid.x,mid.y,mid.z,mid.x+polyNormals[i].x*len,mid.y+polyNormals[i].y*len,mid.z+polyNormals[i].z*len);
 			
-			//scatterMeshes.push_back(ofMesh::cone(100.0, 200.0));
+			ofPushMatrix();
+			ofTranslate(mid.x, mid.y, mid.z);
+			scatterMeshes.push_back(ofMesh::cone(100.0, 200.0));
+			
+			ofPopMatrix();
         }
     }else{
         for(int i = 0; i < vertNormals.size(); i++){
