@@ -64,7 +64,13 @@
     <ClCompile Include="..\..\..\addons\ofxOpenCv\src\ofxCvShortImage.cpp">
       <Filter>addons\ofxOpenCv\src</Filter>
     </ClCompile>
+    <ClCompile Include="src\shapeBase.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
     <ClCompile Include="src\shape.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\shapeScatter.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -848,7 +854,13 @@
     <ClInclude Include="..\..\..\addons\ofxOpenCv\libs\opencv\include\opencv2\videostab\videostab.hpp">
       <Filter>addons\ofxOpenCv\libs\opencv\include\opencv2\videostab</Filter>
     </ClInclude>
+    <ClInclude Include="src\shapeBase.h">
+      <Filter>src</Filter>
+    </ClInclude>
     <ClInclude Include="src\shape.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\shapeScatter.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,7 +1,8 @@
 #pragma once
 
 #include "ofMain.h"
-#include "shape.h"
+//#include "shape.h"
+#include "shapeScatter.h"
 
 class ofApp : public ofBaseApp{
 
@@ -26,4 +27,6 @@ class ofApp : public ofBaseApp{
 		shape testShape;
 		ofCamera cam;
 		ofLight light;
+
+		shapeScatter scat;
 };

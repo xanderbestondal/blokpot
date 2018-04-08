@@ -194,6 +194,8 @@
     <ClCompile Include="..\..\..\addons\ofxOpenCv\src\ofxCvImage.cpp" />
     <ClCompile Include="..\..\..\addons\ofxOpenCv\src\ofxCvShortImage.cpp" />
     <ClCompile Include="src\shape.cpp" />
+    <ClCompile Include="src\shapeBase.cpp" />
+    <ClCompile Include="src\shapeScatter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ofApp.h" />
@@ -417,6 +419,8 @@
     <ClInclude Include="..\..\..\addons\ofxOpenCv\libs\opencv\include\opencv2\videostab\stabilizer.hpp" />
     <ClInclude Include="..\..\..\addons\ofxOpenCv\libs\opencv\include\opencv2\videostab\videostab.hpp" />
     <ClInclude Include="src\shape.h" />
+    <ClInclude Include="src\shapeBase.h" />
+    <ClInclude Include="src\shapeScatter.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">

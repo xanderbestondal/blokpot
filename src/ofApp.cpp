@@ -4,7 +4,7 @@
 void ofApp::setup(){
 
 	testShape.setup();
-	testShape.cylinder(30, 10, 400, 300, false, true);
+	testShape.cylinder(10, 10, 100, 100, false, true);
 
 	//we need to call this for textures to work on models
 	//ofDisableArbTex();
@@ -13,8 +13,10 @@ void ofApp::setup(){
 
 	ofSetWindowShape(1280, 800);
 
-	//light.setPosition(1000, 1000, 1000);
-	//light.enable();
+	light.setPosition(1000, 1000, 1000);
+	light.enable();
+
+	scat.setSurface(testShape);
 
 	//testShape.loadObj("meshes/sam.obj");
 
@@ -40,9 +42,11 @@ void ofApp::draw(){
 	cam.setPosition(0, 0, 1000);
 
 	ofRotate(45, 1, 1, 0);
-	//testShape.show();
-	testShape.drawNormals(false);
-	testShape.drawWireframeSet = true;
+	testShape.show(ofPoint(0,0,0), ofVec3f(1,0,0));
+	scat.setSurface(testShape);
+	scat.scatter();
+	//testShape.object.drawNormals(false);
+	//testShape.object.drawWireframeSet = true;
 
 	//testShape.mapByLight(light.getPosition());
 
