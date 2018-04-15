@@ -6,10 +6,10 @@
 
 class shapeMapping : public ofBaseApp {
 	public:
-		void setMeshBase(shapeBase shp);
+		void setMeshBase(shapeBase* shp);
 
-		ofMesh mesh;
-		shapeBase meshBase;
+		ofMesh* mesh;
+		shapeBase* meshBase;
 
 		vector<float> vertMap;
 		ofImage displaceImg;

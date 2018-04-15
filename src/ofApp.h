@@ -6,6 +6,8 @@
 #include "shapeDeform.h"
 #include "shapeMapping.h"
 
+#include "ofxMotionDetector.h"
+
 class ofApp : public ofBaseApp{
 
 	public:
@@ -24,7 +26,8 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
-		
+
+
 
 		shape testShape;
 		ofCamera cam;
@@ -33,4 +36,9 @@ class ofApp : public ofBaseApp{
 		shapeScatter scat;
 		shapeDeform deform;
 		shapeMapping map;
+
+		void setupCam();
+		ofxMotionDetector motionDetector;
+		int 				camWidth;
+		int 				camHeight;
 };

@@ -214,9 +214,9 @@ void shapeBase::show(){
 
     setNormals(mesh);
     //solidShading();
-	if (drawNormalsSet) {
-		drawNormals();
-	}
+	//if (drawNormalsSet) {
+	//	drawNormals();
+	//}
     //drawNormals(true);
 
     //ofTranslate(-20,0,0);
@@ -230,6 +230,7 @@ void shapeBase::show(){
 //    img.loadImage("img_01.png");
 //    changeColor();
     //img.rotate90(5);
+
     img.bind();
 
     mesh.draw();

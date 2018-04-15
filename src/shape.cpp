@@ -118,7 +118,7 @@ ofMesh shape::cylinder(int steps, int heightSegments, float height, float radius
 
 	for (int i = 0; i < heightSegments + 1; i++) {
 		float sphereRadius = radius;
-		float circlePos = (float(i) / heightSegments) * (height)-height / 2;
+		float circlePos = (float(i) / heightSegments) * -height+height / 2;
 
 		if (sphere) {
 			sphereRadius = sin(float(i) / heightSegments * PI)*radius;
@@ -158,7 +158,6 @@ void shape::show(ofPoint translate, ofVec3f rotate) {
 
 	ofTranslate(translate);
 	
-
 	object.show();
 
 	ofPopMatrix();

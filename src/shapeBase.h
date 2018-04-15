@@ -11,7 +11,6 @@ class shapeBase : public ofBaseApp{
 		shapeBase() {
 
 			drawNormalsSet = false;
-			deformMultiplier = 2;
 		}
 
         ofMesh mesh;
@@ -23,20 +22,13 @@ class shapeBase : public ofBaseApp{
         ofTextureData texData;
 
 
-        //int segment_count;
-        int steps;
-        int segments;
         int tris;
 
-        int iterations;
-		//int deformStrength;
-		float deformMultiplier;
 
         vector<ofVec3f> vertsBasePos; // used to be able to alwys go back to the original shape
         vector<ofVec3f> vertsDeformedPos;
         vector<ofVec3f> vertsDeformeFrom;// used for multiple iterations of displacement
 
-		vector<ofVec3f> vertsBlendshapePos;
 
         vector<ofVec3f> vertsBaseNormals;
         vector<ofVec3f> normalsDeformeFrom;
@@ -45,13 +37,6 @@ class shapeBase : public ofBaseApp{
         vector<ofVec3f> vertNormals;
 
         vector<vector<int> > vertsTris;
-
-        vector<ofIndexType > originalIndices;// used to store verts before division
-        vector<ofVec3f > dividedIndices; // used to store ALL verts after division
-        //vector<ofVec3f > dividedIndices; // used to store only new verts after division
-
-        vector<ofVec2f > dividedList; // used to store vert pairs that are divided
-        vector<int > dividedVertList; // used together with dividedList to find vert number that was already divided
 
 
         void makeTri(int vert1,int vert2,int vert3);
@@ -75,7 +60,7 @@ class shapeBase : public ofBaseApp{
 		void storeBoundingBox();
 		void vertPosToRgb();
 
-        void loopTexture(int xOffset,int yOffset,float scale,bool blend=false);
+        void loopTexture(int xOffset=1,int yOffset=1,float scale=1,bool blend=false);
 		void setTexture(ofImage texImg);
 		ofImage getTexture();
 

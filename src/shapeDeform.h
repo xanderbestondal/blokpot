@@ -6,11 +6,11 @@
 
 class shapeDeform : public ofBaseApp {
 	public:
-		void setMeshBase(shapeBase shp);
+		void setMeshBase(shapeBase* shp);
 		void setMap(vector<float> map);
 
-		shapeBase meshBase;
-		ofMesh mesh;
+		shapeBase* meshBase;
+		ofMesh* mesh;
 
 		int iterations;
 		//int deformStrength;
