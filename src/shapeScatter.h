@@ -8,7 +8,7 @@ class shapeScatter : public ofBaseApp {
 	public:
 		void setup();
 		void scatter(bool faces = true);
-		void setSurface(shape surf);
+		void setSurfaceShape(shape surf);
 
 		shape scatterSurface;
 		vector<shape> scatterMeshes;

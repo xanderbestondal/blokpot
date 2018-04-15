@@ -195,6 +195,8 @@
     <ClCompile Include="..\..\..\addons\ofxOpenCv\src\ofxCvShortImage.cpp" />
     <ClCompile Include="src\shape.cpp" />
     <ClCompile Include="src\shapeBase.cpp" />
+    <ClCompile Include="src\shapeDeform.cpp" />
+    <ClCompile Include="src\shapeMapping.cpp" />
     <ClCompile Include="src\shapeScatter.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -420,6 +422,8 @@
     <ClInclude Include="..\..\..\addons\ofxOpenCv\libs\opencv\include\opencv2\videostab\videostab.hpp" />
     <ClInclude Include="src\shape.h" />
     <ClInclude Include="src\shapeBase.h" />
+    <ClInclude Include="src\shapeDeform.h" />
+    <ClInclude Include="src\shapeMapping.h" />
     <ClInclude Include="src\shapeScatter.h" />
   </ItemGroup>
   <ItemGroup>

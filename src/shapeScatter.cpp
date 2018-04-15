@@ -8,11 +8,11 @@ void shapeScatter::setup()
 	for (int i = 0; i < scatterSurface.object.polyNormals.size(); i++) {
 		shape shp = shape();
 		shp.setup();
-		shp.cylinder(5, 10, 10, 10, false, true);
+		shp.cylinder(5, 1, 5, 10, false, true);
 		scatterMeshes[i] = shp;
 	}
 }
-void shapeScatter::setSurface(shape surf) {
+void shapeScatter::setSurfaceShape(shape surf) {
 	scatterSurface = surf;
 	setup();
 }

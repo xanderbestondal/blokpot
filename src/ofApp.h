@@ -3,6 +3,8 @@
 #include "ofMain.h"
 //#include "shape.h"
 #include "shapeScatter.h"
+#include "shapeDeform.h"
+#include "shapeMapping.h"
 
 class ofApp : public ofBaseApp{
 
@@ -29,4 +31,6 @@ class ofApp : public ofBaseApp{
 		ofLight light;
 
 		shapeScatter scat;
+		shapeDeform deform;
+		shapeMapping map;
 };

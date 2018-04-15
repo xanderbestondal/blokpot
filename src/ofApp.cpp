@@ -2,10 +2,6 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-
-	testShape.setup();
-	testShape.cylinder(10, 10, 100, 100, false, true);
-
 	//we need to call this for textures to work on models
 	//ofDisableArbTex();
 	//this makes sure that the back of the model doesn't show through the front
@@ -16,7 +12,21 @@ void ofApp::setup(){
 	light.setPosition(1000, 1000, 1000);
 	light.enable();
 
-	scat.setSurface(testShape);
+
+	testShape.setup();
+	testShape.cylinder(10, 10, 200, 200, false, true);
+
+	map.setMeshBase(testShape.object);
+	map.noiseMap(1,.5, ofVec3f(1,1,1),0);
+
+	deform.setMeshBase(testShape.object);
+	deform.setMap(map.vertMap);
+	deform.deformMultiplier = 1;
+	testShape.object.mesh = deform.deform(1, 0);
+
+	scat.setSurfaceShape(testShape);
+
+	//deform.deform(1, 0);
 
 	//testShape.loadObj("meshes/sam.obj");
 
@@ -35,16 +45,17 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-
+	ofPushMatrix();
 	cam.begin();
-	cam.enableOrtho();
+	//cam.enableOrtho();
+	cam.setPosition(0, 0, 400);
 
-	cam.setPosition(0, 0, 1000);
 
-	ofRotate(45, 1, 1, 0);
+	ofRotate(ofGetFrameNum(), 1, 0, 0);
 	testShape.show(ofPoint(0,0,0), ofVec3f(1,0,0));
-	scat.setSurface(testShape);
+	//scat.setSurface(testShape);
 	scat.scatter();
+
 	//testShape.object.drawNormals(false);
 	//testShape.object.drawWireframeSet = true;
 
@@ -52,6 +63,7 @@ void ofApp::draw(){
 
 	cam.end();
 	//testShape.vertPosToRgb();
+	ofPopMatrix();
 }
 
 //--------------------------------------------------------------

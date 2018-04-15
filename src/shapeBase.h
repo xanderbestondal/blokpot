@@ -20,7 +20,6 @@ class shapeBase : public ofBaseApp{
 
 		ofImage img;
 		ofImage grabbedImg;
-        ofImage displaceImg;
         ofTextureData texData;
 
 
@@ -28,6 +27,7 @@ class shapeBase : public ofBaseApp{
         int steps;
         int segments;
         int tris;
+
         int iterations;
 		//int deformStrength;
 		float deformMultiplier;
@@ -43,7 +43,6 @@ class shapeBase : public ofBaseApp{
 
         vector<ofVec3f> polyNormals;
         vector<ofVec3f> vertNormals;
-        vector<float> vertMap;
 
         vector<vector<int> > vertsTris;
 
@@ -64,18 +63,11 @@ class shapeBase : public ofBaseApp{
         void solidShading();
 
         ofVec3f makeTriNormal(ofVec3f p1,ofVec3f p2,ofVec3f p3);
-        void setVertColor();
 
         ofCamera cam;
 
-		void noiseMap(float frequency, float offset, ofVec3f scale, float yPos);// , float zPos);
-        void displaceMap(ofImage dispImg, float offset = 0);
-        void gradientMap();
 		void blendImg(ofImage img1, ofImage img2, ofImage mask = ofImage());
 
-        void solidDeform(int iterations);
-        void deform(int iterations, float Yfavor);
-		void blenshapeDeform(float strength);
         void drawNormals(bool faces=false);
 		bool drawNormalsSet;
 		bool drawWireframeSet;
@@ -83,8 +75,6 @@ class shapeBase : public ofBaseApp{
 		void storeBoundingBox();
 		void vertPosToRgb();
 
-        void mapPlannar(ofCamera cam, bool mirrorX = false);
-        void mapByLight(ofVec3f point);
         void loopTexture(int xOffset,int yOffset,float scale,bool blend=false);
 		void setTexture(ofImage texImg);
 		ofImage getTexture();

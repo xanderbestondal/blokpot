@@ -9,7 +9,7 @@
 void shapeBase::setup() {
 
 	//loadObj("data/mappingfiles/3D.obj");
-	cout << "STAAAAAAAAAAAAAAAAART" << endl;
+	//cout << "STAAAAAAAAAAAAAAAAART" << endl;
 	blendshapeLoaded = false;
 	drawWireframeSet = false;
 	drawNormalsSet = false;
@@ -129,26 +129,6 @@ void shapeBase::drawNormals(bool faces){
     }
 	ofPopStyle();
 }
-void shapeBase::mapPlannar(ofCamera cam, bool mirrorX){
-    mesh.clearTexCoords();
-    for(int i = 0; i < mesh.getNumVertices(); i++){
-        //vertMap.push_back( ofNoise(vertsBasePos[i].x*frequency*scale[0],vertsBasePos[i].y*frequency*scale[1],vertsBasePos[i].z*frequency*scale[2]));
-
-	    ofVec2f uv = cam.worldToScreen(vertsDeformedPos[i]);
-		if (mirrorX) {
-			uv = ofPoint(1 - uv.x / (ofGetWidth()), uv.y / (ofGetHeight()));
-		}else{
-			uv = ofPoint(uv.x / (ofGetWidth()), uv.y / (ofGetHeight()));
-		}
-
-		if (uv.x < 0) { uv.x = .01; }
-		if (uv.x > 1) { uv.x = .99; }
-		if (uv.y < 0) { uv.y = .01; }
-		if (uv.y > 1) { uv.y = .99; }
-
-        mesh.addTexCoord(uv);
-    }
-}
 
 void shapeBase::storeBoundingBox() {
 
@@ -168,7 +148,7 @@ void shapeBase::storeBoundingBox() {
 
 }
 void shapeBase::vertPosToRgb() {
-	vertMap.resize(0);
+	//vertMap.resize(0);
 	int width = 10;
 	int Xpos = 0;
 	int Ypos = 0;
@@ -187,88 +167,12 @@ void shapeBase::vertPosToRgb() {
 		}
 	}
 }
-void shapeBase::mapByLight(ofVec3f point){
-    for(int i = 0; i < polyNormals.size(); i++){
-        ofPoint mid = (mesh.getVertex(mesh.getIndex(i*3))+mesh.getVertex(mesh.getIndex(i*3+1))+mesh.getVertex(mesh.getIndex(i*3+2)))/3;
-        ofPoint lightDir(1,0,0);
-        float dot(((polyNormals[i].dot(lightDir))+1)/2);
-        for(int t = 0; t < 3; t++){
-            mesh.setTexCoord(mesh.getIndex(i*3+t),ofPoint(dot,ofRandom(1)));
-        }
-    }
-}
-void shapeBase::noiseMap(float frequency,float offset,ofVec3f scale, float yPos){//, float zPos){
-    vertMap.resize(0);
-    for(int i = 0; i < mesh.getNumVertices(); i++){
-        vertMap.push_back( ofNoise(vertsBasePos[i].x*frequency*scale[0],vertsBasePos[i].y*frequency*scale[1]+yPos,vertsBasePos[i].z*frequency*scale[2]) + offset);
-    }
-}
-void shapeBase::displaceMap(ofImage dispImg, float offset) {
-	vertMap.resize(0);
-	displaceImg = dispImg;
-	for (int i = 0; i < mesh.getNumVertices(); i++) {
-		ofVec2f uv = mesh.getTexCoord(i);
-		ofColor col = dispImg.getColor(uv.x*dispImg.getWidth(), uv.y*dispImg.getHeight());
-		vertMap.push_back(col.getBrightness() / 255.0f + offset);
-	}
-}
-void shapeBase::gradientMap(){
-    vertMap.resize(0);
-    float height = 500;
-    for(int i = 0; i < mesh.getNumVertices(); i++){
-        vertMap.push_back( vertsBasePos[i].y/height);
-    }
-}
-void shapeBase::solidDeform(int iterations){
-    for(int i = 0; i < mesh.getNumVertices(); i+=3){
-        ofVec3f deformedPos(0,ofRandom(30),0);
-        mesh.setVertex(i,(mesh.getVertex(i)+deformedPos));
-        mesh.setVertex(i+1,(mesh.getVertex(i+1)+deformedPos));
-        mesh.setVertex(i+2,(mesh.getVertex(i+2)+deformedPos));
-    }
-}
-void shapeBase::deform(int iterations, float Yfavor){
-    vertsDeformeFrom = vertsBasePos;
-    normalsDeformeFrom = vertsBaseNormals;
-    for(int iter = 0; iter < iterations; iter++){
-        vertsDeformedPos.resize(0);
-        for(int i = 0; i < mesh.getNumVertices(); i++){
-			float yNormal = 1.0;
-			if (Yfavor != 0) {
-				yNormal = normalsDeformeFrom[i].y * Yfavor;
-			}
-			ofPoint melt = ofPoint(0, Yfavor*(deformMultiplier/2), 0)*(vertMap[i]);
-            ofVec3f deformedPos((vertMap[i]-.5) *deformMultiplier * normalsDeformeFrom[i]+ melt + vertsDeformeFrom[i] + normalsDeformeFrom[i]*deformMultiplier + melt);
-            mesh.setVertex(i,deformedPos);
-            vertsDeformedPos.push_back(deformedPos);
-        }
-        vertsDeformeFrom = vertsDeformedPos;
-        setNormals(mesh);
-        normalsDeformeFrom = mesh.getNormals();
-    }
-}
-void shapeBase::blenshapeDeform(float strength) {
-	if (blendshapeLoaded) {
-		for (int i = 0; i < mesh.getNumVertices(); i++) {
-
-			ofVec3f deformedPos(vertsBasePos[i] * (1 - strength) + blendshapeMesh.getVertex(i) * strength);
-			mesh.setVertex(i, deformedPos);
-		}
-		setNormals(mesh);
-	}
-
-}
 void shapeBase::setTexture(ofImage texImg){
     img = texImg;
 	//img.mirror(false, true);
 }
 ofImage shapeBase::getTexture() {
 	return img;
-}
-void shapeBase::setVertColor(){
-    for(int i = 0; i < mesh.getNumVertices(); i++){
-        mesh.setColor(i,ofFloatColor(1-vertMap[i],0,0));
-    }
 }
 
 void shapeBase::blendImg(ofImage img1, ofImage img2, ofImage mask) {

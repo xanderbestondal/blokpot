@@ -56,7 +56,7 @@ void shape::circle(int steps, float radius, ofVec3f pos) {
 		object.mesh.addVertex(newPos);
 		object.vertsBasePos.push_back(newPos);
 		object.vertsDeformedPos.push_back(newPos);
-		object.vertMap.push_back(0);
+		//object.vertMap.push_back(0);
 
 		object.mesh.addTexCoord(ofVec2f(0, 0));
 
@@ -84,7 +84,7 @@ ofMesh shape::plane(int widthSegments, int heightSegments, float width, float he
 
 			object.vertsBasePos.push_back(newPos);
 			object.vertsDeformedPos.push_back(newPos);
-			object.vertMap.push_back(0);
+			//object.vertMap.push_back(0);
 
 			object.mesh.addTexCoord(ofVec2f(0, 0));
 		}
@@ -118,7 +118,7 @@ ofMesh shape::cylinder(int steps, int heightSegments, float height, float radius
 
 	for (int i = 0; i < heightSegments + 1; i++) {
 		float sphereRadius = radius;
-		float circlePos = float(i) / heightSegments * radius;
+		float circlePos = (float(i) / heightSegments) * (height)-height / 2;
 
 		if (sphere) {
 			sphereRadius = sin(float(i) / heightSegments * PI)*radius;

@@ -73,6 +73,12 @@
     <ClCompile Include="src\shapeScatter.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\shapeDeform.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\shapeMapping.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -861,6 +867,12 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\shapeScatter.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\shapeDeform.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\shapeMapping.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
